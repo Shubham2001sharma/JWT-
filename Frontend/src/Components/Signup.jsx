@@ -1,6 +1,4 @@
-/* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
-
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
@@ -23,12 +21,13 @@ function Signup() {
 
     try {
       // Make the HTTP request
-      await axios.post("http://localhost:3000/FinalData", {
+      await axios.post("http://localhost:3000/signup", {
         name,
         email,
         password,
       });
-      toast.success("Data submitted successfully!"), navigateTo("/");
+      toast.success("Data submitted successfully!");
+      navigateTo("/");
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -84,7 +83,7 @@ function Signup() {
               className="mb-2 bg-gray-200 px-4 py-2 rounded-md w-96"
               type="password"
               placeholder="Password"
-              maxlength="8"
+              maxLength="8"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

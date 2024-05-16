@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const jwtkey = "hello";
 const cookieParser = require("cookie-parser");
 
+
 app.use(cors({
   origin: ["http://localhost:5173"],
   credentials: true
