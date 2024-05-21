@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useContext,useEffect } from "react";
-import { ProductCard } from "./ProductCard";
+import React, { useState, useContext } from "react";
+import { Tshirtdata } from "./Tshirtdata";
 import { Navigate, Link } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import Cartcontext from "../CONTEXT/CartContext";
@@ -10,7 +10,7 @@ import { FaBagShopping } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
 import logo from "../assets/logo1.png";
 
-function Product() {
+function Tshirts() {
   const [quantity, setQuantity] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [matchingProducts, setMatchingProducts] = useState([]);
@@ -19,32 +19,6 @@ function Product() {
 
   const navigate = Navigate;
   axios.defaults.withCredentials = true;
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      console.warn("No token found, redirecting to login.");
-      navigate("/");
-      return;
-    }
-
-    axios
-      .get("http://localhost:3000/verify", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        if (!res.data.status) {
-          console.warn("Token verification failed, redirecting to login.");
-          navigate("/");
-        }
-      })
-      .catch((error) => {
-        console.error("Verification error:", error);
-        navigate("/");
-      });
-  }, [navigate]);
 
   const logout = () => {
     axios
@@ -66,16 +40,15 @@ function Product() {
   };
 
   const handleSearchSubmit = () => {
-    const filteredProducts = ProductCard.filter((product) =>
+    const filteredProducts = Tshirtdata.filter((product) =>
       product.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setMatchingProducts(filteredProducts);
   };
 
-  const productsToDisplay = searchQuery ? matchingProducts : ProductCard;
-
+  const productsToDisplay = searchQuery ? matchingProducts : Tshirtdata;
   return (
-    <div className="bg-gradient-to-b from-purple-300 to-indigo-700 min-h-screen">
+    <div className="bg-gradient-to-b from-purple-300 to-indigo-700 min-h-screen ">
       {/* Header section */}
       <nav className="bg-gradient-to-b from-purple-200 to-indigo-400 p-4">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
@@ -130,7 +103,7 @@ function Product() {
       {/* End of header section */}
 
       <h1 className="text-8xl font-bold text-center text-gray-900 mb-8">
-        BAGS
+        TSHIRTS
       </h1>
 
       {/* Start hero section */}
@@ -159,14 +132,12 @@ function Product() {
     ? product.title.slice(0, 10) + "..."
     : product.title}
 </h2>
-
-
                   <p className="product-price text-lg font-semibold text-gray-800">
                     ${product.price * quantity}
                   </p>
                   <p className="product-description text-yellow-900 font-bold">
-                    {product.description.length > 20
-                      ? product.description.slice(0, 20) + "..."
+                    {product.description.length > 15
+                      ? product.description.slice(0, 15) + "..."
                       : product.description}
                   </p>
 
@@ -215,4 +186,4 @@ function Product() {
   );
 }
 
-export default Product;
+export default Tshirts;

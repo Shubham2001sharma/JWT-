@@ -5,7 +5,7 @@ const cors = require("cors");
 const User = require("./DB");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const stripe = require('stripe')//enter stripe
+const stripe = require('stripe')
 
 const jwtkey = "hello";
 

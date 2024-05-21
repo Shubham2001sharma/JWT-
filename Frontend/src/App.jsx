@@ -8,10 +8,11 @@ import Signup from "./Components/Signup";
 import Dashboard from "./Components/Dashboard";
 import Product from "./Components/Product";
 import Cart from "./Components/Cart";
+import Tshirts from "./Components/Tshirts";
 import CartProvider from "./CONTEXT/CartProvider";
 
 function App() {
-  return(
+  return (
     <CartProvider>
       <Router>
         <Routes>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/product" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/tshirt" element={<Tshirts />} />
         </Routes>
       </Router>
     </CartProvider>

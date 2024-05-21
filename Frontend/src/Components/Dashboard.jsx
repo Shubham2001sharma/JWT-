@@ -1,12 +1,17 @@
 /* eslint-disable no-unused-vars */
 // Dashboard.jsx
-import React, { useState, useEffect,useContext } from "react";
-import { useNavigate,Link } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { FaCartPlus } from "react-icons/fa";
 import ImageSlider from "./ImageSlider";
-import { ProductCard } from "./ProductCard";
+
 import Cartcontext from "../CONTEXT/CartContext";
+import { Tshirtdata } from "./Tshirtdata";
+import { FaTshirt } from "react-icons/fa";
+import { FaBagShopping } from "react-icons/fa6";
+import { FaHome } from "react-icons/fa";
+import logo from "../assets/logo1.png";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -23,7 +28,7 @@ function Dashboard() {
       navigate("/");
       return;
     }
-  
+
     axios
       .get("http://localhost:3000/verify", {
         headers: {
@@ -43,23 +48,26 @@ function Dashboard() {
   }, [navigate]);
 
   const logout = () => {
-  axios
-    .get("http://localhost:3000/logout")
-    .then((response) => {
-      if (response.status === 200) {
-        localStorage.removeItem("token"); // Remove token from localStorage
-        navigate("/"); // Redirect to the login page
-      } else {
-        console.error("Logout failed with status:", response.status);
-      }
-    })
-    .catch((error) => {
-      console.error("Logout error:", error);
-    });
-};
+    axios
+      .get("http://localhost:3000/logout")
+      .then((response) => {
+        if (response.status === 200) {
+          localStorage.removeItem("token"); // Remove token from localStorage
+          navigate("/"); // Redirect to the login page
+        } else {
+          console.error("Logout failed with status:", response.status);
+        }
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
+      });
+  };
 
   const handleProductButtonClick = () => {
     navigate("/product");
+  };
+  const handleTshirtButtonClick = () => {
+    navigate("/tshirt");
   };
 
   const handleSearchInputChange = (event) => {
@@ -67,27 +75,39 @@ function Dashboard() {
   };
 
   const handleSearchSubmit = () => {
-    const filteredProducts = ProductCard.filter((product) =>
-      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    const filteredProducts = Tshirtdata.filter((product) =>
+      product.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setMatchingProducts(filteredProducts);
   };
+  const productsToDisplay = searchQuery ? matchingProducts : Tshirtdata;
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
       {/* header section start */}
-      <nav className="bg-gray-800 p-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="flex items-center">
-            {/* <img src={logo} alt="Logo" className="w-10 h-10 mr-2" /> */}
-            <h1 className="text-2xl font-bold">ECOMMERCE</h1>
+      <nav className="bg-gradient-to-b from-purple-200 to-indigo-400 p-4">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+          <div className="flex items-center mb-4 md:mb-0">
+            <img src={logo} className="h-24 w-24 rounded-full mr-2" alt="Logo"></img>
+            <h1 className="text-2xl font-bold text-gray-900">AJEEB</h1>
+            <div className="flex ml-4">
+              <Link to="/product" className="relative mr-4">
+                <FaBagShopping className="text-3xl text-black" />
+              </Link>
+              <Link to="/tshirt" className="relative mr-4">
+                <FaTshirt className="text-3xl text-black" />
+              </Link>
+              <Link to="/dashboard" className="relative">
+                <FaHome className="text-3xl text-black" />
+              </Link>
+            </div>
           </div>
-          <div className="flex justify-center mb-5">
+          <div className="flex justify-center mb-4 md:mb-0">
             <input
               type="text"
               value={searchQuery}
               onChange={handleSearchInputChange}
-              className="bg-gray-800 text-white font-bold py-2 px-4 rounded-l-md-white focus:outline-none"
+              className="bg-gray-800 text-white font-bold py-2 px-4 rounded-l-md focus:outline-none"
               placeholder="Search Products..."
             />
             <button
@@ -97,31 +117,18 @@ function Dashboard() {
               Search
             </button>
           </div>
-          {matchingProducts.length > 0 && (
-            <div className="flex flex-wrap justify-center">
-              {matchingProducts.map((product) => (
-                <img
-                  key={product.id}
-                  src={product.imageUrl}
-                  alt={product.name}
-                  className="w-20 h-20 mx-2 my-2"
-                />
-              ))}
-            </div>
-          )}
           <div className="flex items-center">
-          <Link to="/cart" className="relative">
-          {cartItems.length > 0 && (
-            <span className=" text-white text-md ml-4 text-md from-stone-50">
-              {cartItems.length}
-            </span>
-          )}
-          <FaCartPlus className="text-3xl text-blue-500 " />
-         
-        </Link>
+            <Link to="/cart" className="relative">
+              {cartItems.length > 0 && (
+                <span className=" text-black text-md from-stone-50 pl-3">
+                  {cartItems.length}
+                </span>
+              )}
+              <FaCartPlus className="text-3xl text-black" />
+            </Link>
             <button
               onClick={logout}
-              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded ml-5"
+              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 ml-5 rounded"
             >
               Logout
             </button>
@@ -131,20 +138,28 @@ function Dashboard() {
       {/* header section end */}
 
       {/* hero section start */}
-      <div className="bg-gradient-to-b from-purple-800 to-indigo-800">
-        <div className="container mx-auto py-6">
+      <div className="bg-gradient-to-b from-purple-300 to-indigo-700">
+        <div className="container py-6 mx-auto">
           <div className="text-center mb-8">
-            <h2 className="text-4xl font-bold">Discover Our Latest Products</h2>
-            <p className="text-lg text-gray-200 mt-2">
+            <h2 className="text-4xl font-bold text-gray-900">
+              Discover Our Latest Products
+            </h2>
+            <p className="text-lg text-gray-900 mt-2">
               Explore our wide range of offerings
             </p>
           </div>
           <div className="text-center mb-5">
             <button
               onClick={handleProductButtonClick}
-              className="bg-green-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300"
+              className="bg-gradient-to-b from-purple-700 to-indigo-700 hover:bg-blue-600 text-black font-bold py-2 px-4 rounded transition duration-300"
             >
-              View Product
+              BAGS
+            </button>
+            <button
+              onClick={handleTshirtButtonClick}
+              className="bg-gradient-to-b from-purple-700 to-indigo-700 text-black font-bold py-2 px-4 rounded transition duration-300 ml-2 md:ml-10 mt-2 md:mt-0"
+            >
+              TSHIRTS
             </button>
           </div>
           <ImageSlider />
@@ -153,9 +168,9 @@ function Dashboard() {
       {/* hero section ends */}
 
       {/* Footer Section */}
-      <footer className="bg-gray-800 text-gray-300 py-8">
-        <div className="container mx-auto flex justify-between items-center">
-          <div>
+      <footer className="bg-gradient-to-b from-purple-200 to-indigo-500 text-gray-900 py-8">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-4 md:mb-0">
             <h3 className="text-xl font-bold mb-4">Contact Us</h3>
             <p>123 Street Name, City, Country</p>
             <p>Email: info@example.com</p>
