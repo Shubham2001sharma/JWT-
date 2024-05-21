@@ -1,20 +1,21 @@
+// server.js
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const User = require("./DB");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const jwtkey = "hello";
-const cookieParser = require("cookie-parser");
+const stripe = require('stripe')('sk_test_51P7A0CSGLIDhZb7J9oaruQym2tmFGooegfe7lHl3CBnMvT9vVToFOC07XkK9XyXNA6FEiwxwF0Qi8LKQXFlNxCHq00JQHupfT2');
 
+const jwtkey = "hello";
 
 app.use(cors({
   origin: ["http://localhost:5173"],
-  credentials: true
+  credentials: true,
 }));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cookieParser());
 
 app.post("/signup", async (req, res) => {
   try {
@@ -40,24 +41,54 @@ app.post("/login", async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({ error: "Invalid password" });
     }
-    const token = jwt.sign({ userId: user._id }, jwtkey, { expiresIn: "2h" });
-    res.cookie("token", token, { httpOnly: true });
-    return res.status(200).json({ message: "Login successful" }); 
+    const token = jwt.sign({ userId: user._id }, jwtkey, { expiresIn: "5000h" });
+    return res.status(200).json({ message: "Login successful", token });
   } catch (error) {
     console.error("Error processing login request:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
 
+app.post('/data', async (req, res) => {
+  const cartItems = req.body.cartItems;
+  console.log("Received cart items:", cartItems);
 
-// Route to verify token
+  try {
+    const lineItems = cartItems.map(item => ({
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: item.title,
+          description: item.description,
+          images: [item.image],
+        },
+        unit_amount: item.price * 100,
+      },
+      quantity: item.quantity, // Ensure this is sent correctly from the frontend
+    }));
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: lineItems,
+      mode: 'payment',
+      success_url: 'http://localhost:5173/success', // Updated port to match your frontend
+      cancel_url: 'http://localhost:5173/cancel',  // Updated port to match your frontend
+    });
+
+    res.status(200).json({ sessionId: session.id });
+  } catch (error) {
+    console.error("Error creating payment intent:", error.message);
+    res.status(500).json({ error: 'Unable to create payment intent' });
+  }
+});
+
 app.get('/verify', verifyToken, (req, res) => {
   res.json({ status: true, message: "Token is valid" });
 });
 
-// Middleware to verify JWT token
 function verifyToken(req, res, next) {
-  const token = req.cookies.token;
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split(" ")[1];
   if (!token) {
     return res.status(401).json({ status: false, message: "No token provided" });
   }
@@ -71,9 +102,8 @@ function verifyToken(req, res, next) {
   });
 }
 
-// Add logout route
 app.get("/logout", (req, res) => {
-  res.clearCookie("token").json({ message: "Logout successful" });
+  res.status(200).json({ message: "Logout successful" });
 });
 
 app.listen(3000, () => {

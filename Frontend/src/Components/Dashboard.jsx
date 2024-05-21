@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// Dashboard.jsx
+import React, { useState, useEffect,useContext } from "react";
+import { useNavigate,Link } from "react-router-dom";
 import axios from "axios";
 import { FaCartPlus } from "react-icons/fa";
 import ImageSlider from "./ImageSlider";
 import { ProductCard } from "./ProductCard";
-// import logo from "../assets/logo.png"; // Import your logo file
+import Cartcontext from "../CONTEXT/CartContext";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -13,14 +14,16 @@ function Dashboard() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [matchingProducts, setMatchingProducts] = useState([]);
+  const { cartItems } = useContext(Cartcontext);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
+      console.warn("No token found, redirecting to login.");
       navigate("/");
       return;
     }
-
+  
     axios
       .get("http://localhost:3000/verify", {
         headers: {
@@ -29,6 +32,7 @@ function Dashboard() {
       })
       .then((res) => {
         if (!res.data.status) {
+          console.warn("Token verification failed, redirecting to login.");
           navigate("/");
         }
       })
@@ -39,13 +43,20 @@ function Dashboard() {
   }, [navigate]);
 
   const logout = () => {
-    try {
-      localStorage.clear();
-      navigate("/");
-    } catch (error) {
+  axios
+    .get("http://localhost:3000/logout")
+    .then((response) => {
+      if (response.status === 200) {
+        localStorage.removeItem("token"); // Remove token from localStorage
+        navigate("/"); // Redirect to the login page
+      } else {
+        console.error("Logout failed with status:", response.status);
+      }
+    })
+    .catch((error) => {
       console.error("Logout error:", error);
-    }
-  };
+    });
+};
 
   const handleProductButtonClick = () => {
     navigate("/product");
@@ -99,10 +110,18 @@ function Dashboard() {
             </div>
           )}
           <div className="flex items-center">
-            <FaCartPlus className="text-2xl mr-6 cursor-pointer" />
+          <Link to="/cart" className="relative">
+          {cartItems.length > 0 && (
+            <span className=" text-white text-md ml-4 text-md from-stone-50">
+              {cartItems.length}
+            </span>
+          )}
+          <FaCartPlus className="text-3xl text-blue-500 " />
+         
+        </Link>
             <button
               onClick={logout}
-              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded ml-5"
             >
               Logout
             </button>

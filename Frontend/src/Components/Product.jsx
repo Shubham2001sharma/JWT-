@@ -4,32 +4,40 @@ import { ProductCard } from "./ProductCard";
 import { Navigate, Link } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import Cartcontext from "../CONTEXT/CartContext";
+import axios from "axios";
 
 function Product() {
-  const [quantity, setQuantity] = useState(1);
+   const [quantity, setQuantity] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [matchingProducts, setMatchingProducts] = useState([]);
   
 
-  const handleQuantityChange = (e) => {
-    const newQuantity = parseInt(e.target.value);
-    setQuantity(newQuantity);
-  };
+  // const handleQuantityChange = (e) => {
+  //   const newQuantity = parseInt(e.target.value);
+  //   setQuantity(newQuantity);
+  // };
 
   const { addToCart,cartItems } = useContext(Cartcontext);
   
 
-  const navigateTo = Navigate;
+  const navigate = Navigate;
+  axios.defaults.withCredentials = true;
 
   const logout = () => {
-    try {
-      localStorage.clear();
-      navigateTo("/");
-    } catch (error) {
-      console.error("Logout error:", error);
-    }
+    axios
+      .get("http://localhost:3000/logout")
+      .then((response) => {
+        if (response.status === 200) {
+          localStorage.removeItem("token"); // Remove token from localStorage
+          window.location.href = "/"; // Redirect to the login page
+        } else {
+          console.error("Logout failed with status:", response.status);
+        }
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
+      });
   };
-
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -45,6 +53,7 @@ function Product() {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
+      
       {/* Header section */}
       <nav className="bg-gray-800 p-4">
         <div className="container mx-auto flex justify-between items-center">
@@ -78,7 +87,7 @@ function Product() {
         </Link>
             <button
               onClick={logout}
-              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 ml-4 rounded"
+              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 ml-5 rounded"
             >
               Logout
             </button>
@@ -87,8 +96,10 @@ function Product() {
       </nav>
       {/* End of header section */}
 
+      <h1 className="text-8xl font-bold text-center text-gray-300 mb-8">BAGS</h1>
+
       {/* Start hero section */}
-      <div className="container mx-auto mt-10 mb-10">
+      <div className="container mx-auto mt-5 mb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {productsToDisplay.length > 0 ? (
             productsToDisplay.map((product) => (
