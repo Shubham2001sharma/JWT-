@@ -71,7 +71,7 @@ app.post('/data', async (req, res) => {
       payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
-      success_url: 'http://localhost:5173/success', // Updated port to match your frontend
+      success_url: 'http://localhost:5173/dashboard', // Updated port to match your frontend
       cancel_url: 'http://localhost:5173/cancel',  // Updated port to match your frontend
     });
 
