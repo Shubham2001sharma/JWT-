@@ -9,9 +9,11 @@ import Dashboard from "./Components/Dashboard";
 import Product from "./Components/Product";
 import Cart from "./Components/Cart";
 import Tshirts from "./Components/Tshirts";
+import Shoes from "./Components/Shoes";
 import CartProvider from "./CONTEXT/CartProvider";
 
 function App() {
+  
   return (
     <CartProvider>
       <Router>
@@ -22,6 +24,7 @@ function App() {
           <Route path="/product" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/tshirt" element={<Tshirts />} />
+          <Route path="/shoe" element={<Shoes/>}/>
         </Routes>
       </Router>
     </CartProvider>

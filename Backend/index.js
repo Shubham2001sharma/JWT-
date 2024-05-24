@@ -41,7 +41,7 @@ app.post("/login", async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({ error: "Invalid password" });
     }
-    const token = jwt.sign({ userId: user._id }, jwtkey, { expiresIn: "5000h" });
+    const token = jwt.sign({ userId: user._id }, jwtkey, { expiresIn: "5h" });
     return res.status(200).json({ message: "Login successful", token });
   } catch (error) {
     console.error("Error processing login request:", error);
@@ -109,3 +109,6 @@ app.get("/logout", (req, res) => {
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
+
+
+  
