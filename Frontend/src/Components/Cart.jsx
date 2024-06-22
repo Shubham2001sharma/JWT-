@@ -8,7 +8,7 @@ function Cart() {
 
   // Calculate total price
   const totalPrice = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + (Number(item.price) || 0) * (Number(item.quantity) || 0),
     0
   );
 
@@ -59,7 +59,7 @@ function Cart() {
               />
               <div className="flex-1">
                 <p className="text-gray-700 mb-1 font-bold">
-                  Price: ${item.price * item.quantity}
+                  Price: ${(Number(item.price) || 0) * (Number(item.quantity) || 0)}
                 </p>
                 <p className="text-gray-700 text-lg mb-1 font-semibold">
                   {item.title}
@@ -97,7 +97,7 @@ function Cart() {
           {cartItems.map((item) => (
             <div key={item.id} className="mb-2 font-bold">
               <p className="text-gray-900 ">
-                Price: ${item.price * item.quantity}
+                Price: ${(Number(item.price) || 0) * (Number(item.quantity) || 0)}
               </p>
               <p className="text-gray-900">Title: {item.title}</p>
             </div>

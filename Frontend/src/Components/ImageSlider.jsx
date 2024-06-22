@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import p1 from "../assets/p1.jpg";
+import p1 from "../assets/p1.avif";
 import p2 from "../assets/p2.jpg";
-import p3 from "../assets/p3.jpg";
+import p3 from "../assets/p3.avif";
 
 const images = [
   p1, // Replace with actual image URLs
@@ -15,9 +15,7 @@ function ImageSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrevClick = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
   const handleNextClick = () => {
@@ -33,11 +31,24 @@ function ImageSlider() {
   }, []);
 
   return (
-    <div className="relative w-screen h-96 overflow-hidden">
+    <div className="relative w-full h-96 overflow-hidden flex">
       <img
         src={images[currentIndex]}
         alt="Slider"
-        className="w-full object-cover"
+        className="w-full h-full object-cover"
+        style={{ objectFit: "contain" }}
+      />
+       <img
+        src={images[currentIndex]}
+        alt="Slider"
+        className="w-full h-full object-cover"
+        style={{ objectFit: "contain" }}
+      />
+       <img
+        src={images[currentIndex]}
+        alt="Slider"
+        className="w-full h-full object-cover"
+        style={{ objectFit: "contain" }}
       />
       <button
         onClick={handlePrevClick}

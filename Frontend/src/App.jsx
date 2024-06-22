@@ -12,6 +12,7 @@ import Tshirts from "./Components/Tshirts";
 import Shoes from "./Components/Shoes";
 import CartProvider from "./CONTEXT/CartProvider";
 
+
 function App() {
   
   return (
@@ -25,6 +26,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/tshirt" element={<Tshirts />} />
           <Route path="/shoe" element={<Shoes/>}/>
+          
+          
         </Routes>
       </Router>
     </CartProvider>

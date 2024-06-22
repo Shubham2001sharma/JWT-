@@ -18,6 +18,9 @@ function Dashboard() {
   const handleTshirtButtonClick = () => {
     navigate("/tshirt");
   };
+  const handleShoesButtonClick=()=>{
+    navigate("/shoe")
+  }
 
   const productsToDisplay = searchQuery ? matchingProducts : Tshirtdata;
 
@@ -36,7 +39,7 @@ function Dashboard() {
               Explore our wide range of offerings
             </p>
           </div>
-          <div className="text-center mb-5">
+          <div className="text-center mb-5 space-x-5">
             <button
               onClick={handleProductButtonClick}
               className="bg-gradient-to-b from-purple-700 to-indigo-700 hover:bg-blue-600 text-black font-bold py-2 px-4 rounded transition duration-300"
@@ -48,6 +51,12 @@ function Dashboard() {
               className="bg-gradient-to-b from-purple-700 to-indigo-700 text-black font-bold py-2 px-4 rounded transition duration-300 ml-2 md:ml-10 mt-2 md:mt-0"
             >
               TSHIRTS
+            </button>
+            <button
+              onClick={handleShoesButtonClick}
+              className="bg-gradient-to-b from-purple-700 to-indigo-700 hover:bg-blue-600 text-black font-bold py-2 px-4 rounded transition duration-300"
+            >
+              SHOES
             </button>
           </div>
           <ImageSlider />
