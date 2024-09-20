@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const Razorpay = require("razorpay");
-
+require('dotenv').config();
 const User = require("./DB");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -28,8 +28,8 @@ app.get("/", (req, res) => {
 });
 
 const razorpay = new Razorpay({
-  key_id: "rzp_test_mkAsXNhrplFsgo",
-  key_secret: "fRtZeCj5syEeBrJhGKvB3oAn",
+  key_id: process.env.RazorPay_id,
+  key_secret: process.env.RazorPay_secret ,
 });
 
 app.post("/signup", async (req, res) => {
