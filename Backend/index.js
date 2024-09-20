@@ -2,10 +2,14 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const Razorpay = require('razorpay');
+
 const User = require("./DB");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const stripe = require('stripe')("sk_test_51P7A0CSGLIDhZb7J9oaruQym2tmFGooegfe7lHl3CBnMvT9vVToFOC07XkK9XyXNA6FEiwxwF0Qi8LKQXFlNxCHq00JQHupfT2")
+// rzp_test_mkAsXNhrplFsgo   id
+// fRtZeCj5syEeBrJhGKvB3oAn   secret
 
 const jwtkey = "hello";
 
@@ -16,6 +20,15 @@ app.use(cors({
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.get("/",(req,res)=>{
+  res.json("hello");
+})
+
+const razorpay = new Razorpay({
+  key_id: 'rzp_test_mkAsXNhrplFsgo',
+  key_secret: 'fRtZeCj5syEeBrJhGKvB3oAn',
+});
 
 app.post("/signup", async (req, res) => {
   try {
@@ -51,36 +64,32 @@ app.post("/login", async (req, res) => {
 
 app.post('/data', async (req, res) => {
   const cartItems = req.body.cartItems;
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + (Number(item.price) || 0) * (Number(item.quantity) || 0),
+    0
+  );
+
   console.log("Received cart items:", cartItems);
+  console.log("Total Price:", totalPrice);
 
   try {
-    const lineItems = cartItems.map(item => ({
-      price_data: {
-        currency: 'usd',
-        product_data: {
-          name: item.title,
-          description: item.description,
-          images: [item.image],
-        },
-        unit_amount: item.price * 100,
-      },
-      quantity: item.quantity, // Ensure this is sent correctly from the frontend
-    }));
-
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: lineItems,
-      mode: 'payment',
-      success_url: 'http://localhost:5173/dashboard', // Updated port to match your frontend
-      cancel_url: 'http://localhost:5173/cancel',  // Updated port to match your frontend
+    // Create a Razorpay order
+    const order = await razorpay.orders.create({
+      amount: totalPrice * 100, // Convert amount to paise
+      currency: 'INR',
+      receipt: 'order_rcptid_' + Math.floor(Math.random() * 1000000),
     });
 
-    res.status(200).json({ sessionId: session.id });
+    res.status(200).json({
+      orderId: order.id,
+      amount: order.amount,
+    });
   } catch (error) {
-    console.error("Error creating payment intent:", error.message);
-    res.status(500).json({ error: 'Unable to create payment intent' });
+    console.error("Error creating Razorpay order:", error.message);
+    res.status(500).json({ error: 'Unable to create order' });
   }
 });
+
 
 app.get('/verify', verifyToken, (req, res) => {
   res.json({ status: true, message: "Token is valid" });

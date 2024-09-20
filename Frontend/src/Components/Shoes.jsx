@@ -5,7 +5,7 @@ import { ShoesData } from "./ShoesData";
 import Cartcontext from "../CONTEXT/CartContext";
 import Footer from "./Footer";
 
-function Tshirts() {
+function Shoes() {
   const [quantity, setQuantity] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [matchingProducts, setMatchingProducts] = useState([]);
@@ -87,4 +87,4 @@ function Tshirts() {
   );
 }
 
-export default Tshirts;
+export default Shoes;

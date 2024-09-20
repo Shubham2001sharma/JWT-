@@ -119,8 +119,7 @@ export const ProductCard = [
     description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
     category: "Men and Women",
     image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
+    'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSEUOl7MpPbINHe3AUHZ2Fyoq4Gav1B096wjIarrnVAG7T76mI-EMG7p6Ugke-SV5Gb8Iwo4Ikf_8ed9r7mIkuQTx5VhlNaff1mMOuko3Jg6HEz51lhYq3eIiZyHO-3E6JmkFhYMQ&usqp=CAc'  },
   {
     id: 15,
     title: "Safari Vogue 3",
@@ -128,8 +127,7 @@ export const ProductCard = [
     description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
     category: "Men and Women",
     image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
+    'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQq0yir-Q6gx2W3UNh89XaEvvzhgbWbk8owkIWbeptoipHrNYX4sxNb7pk1ofYTJg_pUYyOj_Uwy2pNDuO5xQhZznK3zHizQNuvzfaPZmQ6MrzD3xCON7yn&usqp=CAc'  },
   {
     id: 13,
     title: "Safari Vogue 3",
@@ -137,8 +135,7 @@ export const ProductCard = [
     description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
     category: "Men and Women",
     image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
+    'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTwZPKtVq2KDiIkHQXSVcWCF1CqZiFbLjFiPwQQiadrzJiI65-i6JGvbMe-W4bFCBkUHkECL36D-MLEAhy07WdMOaUzVPNa4eIsWKxI8pZbQS7Sk3oNz--dNqaWq4HRbuXR3S4HhsY&usqp=CAc'  },
   {
     id: 16,
     title: "Safari Vogue 3",
@@ -146,8 +143,7 @@ export const ProductCard = [
     description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
     category: "Men and Women",
     image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
+    'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQBjYbbGv67EiqLwnURhpHnlm-RkQnisFmTR1fTAJmXhbANDWr2qPY63F4rI2RnZJeMMR7xx7wof_8tNZjEW-bfIslBHcS7amOmxIJyLsZ9e07aQFw0Ov84DfI&usqp=CAc'  },
   {
     id: 17,
     title: "Safari Vogue 3",
@@ -155,8 +151,7 @@ export const ProductCard = [
     description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
     category: "Men and Women",
     image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
+    'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTLkiTIMx9l0DUQ4VV1Kz5u7vr04YIfcHk3G9ET-UOrsl5JACKyVGSFr71J5kUkqKi-ndWxcy7o6rL1xEg7iqYDfx5Ay6HEGTj7p7-oJGBx14rxqNQKc-EGL84XdD4kWmM6IwzSpKjhCrY&usqp=CAc'  },
   {
     id: 18,
     title: "Safari Vogue 3",
@@ -164,8 +159,7 @@ export const ProductCard = [
     description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
     category: "Men and Women",
     image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
+    'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTql78okJC7jZl3eZuoSkNyUK3i5gAZ6_NqVdFztYleJMXJMSlZcq3q8z6qSr0ZV5lRMAxaXFWnbRZ_0k2wzvUxn9PSkFB4uTlseCTNTvpSpuRd65y29n1YAoQjeCOdhJZjZI_CcVk&usqp=CAc'  },
   {
     id: 19,
     title: "Safari Vogue 3",
@@ -173,8 +167,7 @@ export const ProductCard = [
     description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
     category: "Men and Women",
     image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
+    'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQpqjTUc7CnEhtVgfxW0HlsTyZnKbDmaA6LuaVukVoI1oOTeTeBiKEL4pbvYRpJ2FZk68HC1t93_ZQOJlU6Yb0mNAOMUs-Qq4vpwWHHyfCncYZ9FwGDJyCLqCweP3KvYzRowcklNNtltUQ&usqp=CAc'  },
   {
     id: 20,
     title: "Safari Vogue 3",
@@ -182,8 +175,7 @@ export const ProductCard = [
     description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
     category: "Men and Women",
     image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
+    'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR1-0BfCdtBrY0-wVgXNs0UT_gjtCMaossG8e4nssCt4UBXTXDNlt9iR87y9OFM2Ce076L5RstPE9v0BG8OS6e5TqaNv9bGw_K2_aVL4EVq2a-OD72sAbQFiQ&usqp=CAc'  },
   {
     id: 21,
     title: "Safari Vogue 3",
@@ -191,93 +183,5 @@ export const ProductCard = [
     description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
     category: "Men and Women",
     image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
-  {
-    id: 22,
-    title: "Safari Vogue 3",
-    price: 1999,
-    description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
-    category: "Men and Women",
-    image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
-  {
-    id: 23,
-    title: "Safari Vogue 3",
-    price: 1999,
-    description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
-    category: "Men and Women",
-    image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
-
-  {
-    id: 24,
-    title: "Safari Vogue 3",
-    price: 1999,
-    description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
-    category: "Men and Women",
-    image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
-
-  {
-    id: 25,
-    title: "Safari Vogue 3",
-    price: 1999,
-    description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
-    category: "Men and Women",
-    image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
-  {
-    id: 26,
-    title: "Safari Vogue 3",
-    price: 1999,
-    description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
-    category: "Men and Women",
-    image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
-
-  {
-    id: 27,
-    title: "Safari Vogue 3",
-    price: 1999,
-    description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
-    category: "Men and Women",
-    image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
-
-  {
-    id: 28,
-    title: "Safari Vogue 3",
-    price: 1999,
-    description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
-    category: "Men and Women",
-    image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
-
-  {
-    id: 29,
-    title: "Safari Vogue 3",
-    price: 1999,
-    description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
-    category: "Men and Women",
-    image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
-
-  {
-    id: 30,
-    title: "Safari Vogue 3",
-    price: 1999,
-    description: "Safari Vogue 3 37L Black Laptop Backpack With Raincover",
-    category: "Men and Women",
-    image:
-      "https://safaribags.com/cdn/shop/files/Vogue-03_BP_N_Black_02_800x.jpg?v=1707728105",
-  },
+    'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTPW9ta9GtteWpU2rVWV_QUfcLZpVo7ctB0yGnIxQ8ghx3Poiq0F9ODcFP_Es8vnYKuauZj9RfG1FAHtAEBLnMkWKQuJijSXy-9bTo1GmTFAmFhaq51vKkYD3mMJVyK2yGzrUJxWJb7pZg&usqp=CAc'} 
 ];

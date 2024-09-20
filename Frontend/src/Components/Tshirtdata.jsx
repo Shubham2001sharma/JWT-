@@ -96,8 +96,7 @@ export const Tshirtdata = [
         description: "Upgrade to the Dark Grey structured shirts for men and get a shirt + layer in one. Featuring a resort collar, flap pockets, half sleeves, and structured blend fabric, the structured shirt combines style, comfort, and a long wardrobe life.",
         category: "Men",
         image:
-        "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSFeAB66pRfKVme0tOYUor-dVAJkZ38N1PQOvcQgTGgEJSHKgSUhKCMosl_TgISO-0q_MIZdC9pKzbpGeBgZx7XuecRazhOreF4mf3M9oE&usqp=CAE"
-      },
+        'https://cdn.shopify.com/s/files/1/1982/7331/files/Teddy-Printed-Oversized-T-Shirt-Veirdo-9408.jpg?v=1707167484&width=360'      },
       {
         id: 42,
         title: "Powerlook Men Dark Grey Oversized Structured Fabric Casual ShirtsPowerlook",
@@ -105,6 +104,55 @@ export const Tshirtdata = [
         description: "Upgrade to the Dark Grey structured shirts for men and get a shirt + layer in one. Featuring a resort collar, flap pockets, half sleeves, and structured blend fabric, the structured shirt combines style, comfort, and a long wardrobe life.",
         category: "Men",
         image:
-        "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSFeAB66pRfKVme0tOYUor-dVAJkZ38N1PQOvcQgTGgEJSHKgSUhKCMosl_TgISO-0q_MIZdC9pKzbpGeBgZx7XuecRazhOreF4mf3M9oE&usqp=CAE"
-      },
+        'https://veirdo.in/cdn/shop/files/Originals-Beige-Oversized-T-Shirt-Veirdo-6625.jpg?v=1707158469&width=360'      },
+        {
+          id: 43,
+          title: "Powerlook Men Dark Grey Oversized Structured Fabric Casual ShirtsPowerlook",
+          price: 799,
+          description: "Upgrade to the Dark Grey structured shirts for men and get a shirt + layer in one. Featuring a resort collar, flap pockets, half sleeves, and structured blend fabric, the structured shirt combines style, comfort, and a long wardrobe life.",
+          category: "Men",
+          image:
+          'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTkKl4lprVvmIlc7KelRD16b7on3Ogw3HtaVMin9GzB2-Sq_He_YD006Tt308A7noFPf1twcmMYV7PNrUW6sgRgwtgGf29IiKsjcQnyDhcehMn2B2EZwfguXLSwo1Bo-OXUQh4IhQ&usqp=CAc'      },
+          {
+            id: 44,
+            title: "Powerlook Men Dark Grey Oversized Structured Fabric Casual ShirtsPowerlook",
+            price: 799,
+            description: "Upgrade to the Dark Grey structured shirts for men and get a shirt + layer in one. Featuring a resort collar, flap pockets, half sleeves, and structured blend fabric, the structured shirt combines style, comfort, and a long wardrobe life.",
+            category: "Men",
+            image:
+            'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTkpe--cDFlVBe_pkobVwdr8WSE6rwjWsoj5gBsnA_5XTdBiVG-Z2byV-ljaFw6X1qANQ_HRvk50P0aVxZpn8YdG2IuHP3VWNLLuvu1hstGn14oX6Yp0etrcVQTVVtnj93U-MGoHf0&usqp=CAc'      },
+            {
+              id: 45,
+              title: "Powerlook Men Dark Grey Oversized Structured Fabric Casual ShirtsPowerlook",
+              price: 799,
+              description: "Upgrade to the Dark Grey structured shirts for men and get a shirt + layer in one. Featuring a resort collar, flap pockets, half sleeves, and structured blend fabric, the structured shirt combines style, comfort, and a long wardrobe life.",
+              category: "Men",
+              image:
+              'https://entertainmentstore.in/cdn/shop/files/20624040128_e15d2944-0acf-4799-b2ac-528230afabc9_686x700.png?v=1715951719'   } ,
+              {
+                id: 46,
+                title: "Powerlook Men Dark Grey Oversized Structured Fabric Casual ShirtsPowerlook",
+                price: 799,
+                description: "Upgrade to the Dark Grey structured shirts for men and get a shirt + layer in one. Featuring a resort collar, flap pockets, half sleeves, and structured blend fabric, the structured shirt combines style, comfort, and a long wardrobe life.",
+                category: "Men",
+                image:
+                'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRHL2wJYrRTXL4sprepx68LnmKqJOpru2YUz0pEZWAwcKMgbrbutI00Hbc8V8-LXqivlfuhcmyZ6ZdFngVdjTsfKidVbgQlzCMHsbLBQLRKw7k9mxrZZJlCkKhj6iC9wpDcm_xjGtNxxak&usqp=CAc'      },
+
+                {
+                  id: 47,
+                  title: "Powerlook Men Dark Grey Oversized Structured Fabric Casual ShirtsPowerlook",
+                  price: 799,
+                  description: "Upgrade to the Dark Grey structured shirts for men and get a shirt + layer in one. Featuring a resort collar, flap pockets, half sleeves, and structured blend fabric, the structured shirt combines style, comfort, and a long wardrobe life.",
+                  category: "Men",
+                  image:
+                  'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSokbfcx9gZZ3T0jCFuQHr2URnL6IcTPVWxj0z0PPQeRGsXM-wfPeqyd0GJfiSmHxDwpcIu_rDongKmGYhnXuhXWXVonfFJDUA3FeQ320Pa58SI_og2u-lTcg&usqp=CAc'      },
+
+                  {
+                    id: 48,
+                    title: "Powerlook Men Dark Grey Oversized Structured Fabric Casual ShirtsPowerlook",
+                    price: 799,
+                    description: "Upgrade to the Dark Grey structured shirts for men and get a shirt + layer in one. Featuring a resort collar, flap pockets, half sleeves, and structured blend fabric, the structured shirt combines style, comfort, and a long wardrobe life.",
+                    category: "Men",
+                    image:
+                    'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRWy9VrDhd1PMVNhwzy-E5S6eDiES48mTMiTmIdFBqTvYZ_vm82POEDIsBldlbjYV8wUwavdBJF5alVaVF-KISXgnJxRDSr1ecAu4-PeFSWzF6DSrP0Dxd7Aw&usqp=CAc'      },
 ]

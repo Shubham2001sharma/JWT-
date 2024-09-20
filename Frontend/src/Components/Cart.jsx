@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
 import CartContext from "../CONTEXT/CartContext";
-import { loadStripe } from "@stripe/stripe-js";
 
 function Cart() {
   const { cartItems, removeFromCart, updateCartItem } = useContext(CartContext);
@@ -21,22 +19,46 @@ function Cart() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ cartItems }),
+        body: JSON.stringify({ cartItems, totalPrice }),
       });
-
+      
       if (!response.ok) {
-        throw new Error("Failed to fetch");
+        const errorMessage = await response.text();
+        throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorMessage}`);
       }
-
+      
       const data = await response.json();
-      console.log("Payment intent created:", data);
+      console.log("Order data received:", data);
 
-      const stripe = await loadStripe(
-        "pk_test_51P7A0CSGLIDhZb7JC1cU89xWxqRt0XTzHu4E2LUhlrZAA4D2VjPktWKBxeXLnl0owXbPZA510w7GuIeAvIkIp8vs00oLABJybU"
-      );
-      stripe.redirectToCheckout({ sessionId: data.sessionId });
+      const options = {
+        key: 'rzp_test_mkAsXNhrplFsgo', // Replace with your Razorpay key id
+        amount: data.amount, // Amount in paise (data.amount should be in paise)
+        currency: "INR",
+        name: "Your Company Name",
+        description: "Order Description",
+        image: "https://example.com/your-logo.png",
+        order_id: data.orderId, // Order ID generated from your backend
+        handler: function (response) {
+          console.log("Payment successful:", response);
+          // Handle successful payment response here
+        },
+        prefill: {
+          name: "Customer Name",
+          email: 'sharmashubu4600@gmail.com',
+          contact: "9999999999",
+        },
+        notes: {
+          address: "Customer address",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
     } catch (error) {
-      console.error("Error creating payment intent:", error.message);
+      console.error("Error creating Razorpay order:", error.message);
     }
   };
 
