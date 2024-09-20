@@ -28,8 +28,8 @@ app.get("/", (req, res) => {
 });
 
 const razorpay = new Razorpay({
-  key_id: process.env.RazorPay_id,
-  key_secret: process.env.RazorPay_secret ,
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET ,
 });
 
 app.post("/signup", async (req, res) => {
