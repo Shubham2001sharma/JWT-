@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // Connect to MongoDB database
-mongoose.connect('mongodb://localhost:27017/yourDatabase', {
+mongoose.connect('mongodb+srv://sharmashubu4600:18jan2001@ecommerce.v4mpu.mongodb.net/?retryWrites=true&w=majority&appName=ECommerce', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
