@@ -14,12 +14,11 @@ const jwt = require("jsonwebtoken");
 
 const jwtkey = "hello";
 
-app.use(
-  cors({
-    origin: ["http://localhost:5173"],
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: 'https://frontend-gamma-rust-23.vercel.app', // replace with your frontend URL
+  methods: 'GET,POST,PUT,DELETE', // specify allowed methods
+  credentials: true // if you need to send cookies or authorization headers
+}));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

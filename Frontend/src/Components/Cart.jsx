@@ -14,7 +14,7 @@ function Cart() {
     try {
       console.log("Sending cart items to backend:", cartItems);
 
-      const response = await fetch("http://localhost:3000/data", {
+      const response = await fetch("https://backend-five-beige.vercel.app/data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

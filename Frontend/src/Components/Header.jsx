@@ -27,7 +27,7 @@ function Header() {
             return;
         }
 
-        axios.get("http://localhost:3000/verify", {
+        axios.get("https://backend-five-beige.vercel.app/verify", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -45,7 +45,7 @@ function Header() {
     }, [navigate]);
 
     const logout = () => {
-        axios.get("http://localhost:3000/logout")
+        axios.get("https://backend-five-beige.vercel.app/logout")
             .then((response) => {
                 if (response.status === 200) {
                     localStorage.removeItem("token"); 

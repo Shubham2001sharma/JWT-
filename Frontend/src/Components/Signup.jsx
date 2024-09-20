@@ -21,7 +21,7 @@ function Signup() {
 
     try {
       // Make the HTTP request
-      await axios.post("http://localhost:3000/signup", {
+      await axios.post("https://backend-five-beige.vercel.app/signup", {
         name,
         email,
         password,
