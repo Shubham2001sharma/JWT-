@@ -29,8 +29,8 @@ app.get("/", (req, res) => {
 });
 
 const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
+  key_id: process.env.RAZORPAY_KEY_ID||'rzp_test_mkAsXNhrplFsgo',
+  key_secret: process.env.RAZORPAY_KEY_SECRET||"fRtZeCj5syEeBrJhGKvB3oAn",
 });
 
 app.post("/signup", async (req, res) => {
