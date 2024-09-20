@@ -5,7 +5,7 @@ const cors = require("cors");
 const Razorpay = require("razorpay");
 require('dotenv').config();
 const User = require("./DB");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 // rzp_test_mkAsXNhrplFsgo   id
