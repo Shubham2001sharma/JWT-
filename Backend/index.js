@@ -2,32 +2,34 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const Razorpay = require('razorpay');
+const Razorpay = require("razorpay");
 
 const User = require("./DB");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const stripe = require('stripe')("sk_test_51P7A0CSGLIDhZb7J9oaruQym2tmFGooegfe7lHl3CBnMvT9vVToFOC07XkK9XyXNA6FEiwxwF0Qi8LKQXFlNxCHq00JQHupfT2")
+
 // rzp_test_mkAsXNhrplFsgo   id
 // fRtZeCj5syEeBrJhGKvB3oAn   secret
 
 const jwtkey = "hello";
 
-app.use(cors({
-  origin: ["http://localhost:5173"],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    credentials: true,
+  })
+);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
   res.json("hello");
-})
+});
 
 const razorpay = new Razorpay({
-  key_id: 'rzp_test_mkAsXNhrplFsgo',
-  key_secret: 'fRtZeCj5syEeBrJhGKvB3oAn',
+  key_id: "rzp_test_mkAsXNhrplFsgo",
+  key_secret: "fRtZeCj5syEeBrJhGKvB3oAn",
 });
 
 app.post("/signup", async (req, res) => {
@@ -62,10 +64,11 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.post('/data', async (req, res) => {
+app.post("/data", async (req, res) => {
   const cartItems = req.body.cartItems;
   const totalPrice = cartItems.reduce(
-    (acc, item) => acc + (Number(item.price) || 0) * (Number(item.quantity) || 0),
+    (acc, item) =>
+      acc + (Number(item.price) || 0) * (Number(item.quantity) || 0),
     0
   );
 
@@ -76,8 +79,8 @@ app.post('/data', async (req, res) => {
     // Create a Razorpay order
     const order = await razorpay.orders.create({
       amount: totalPrice * 100, // Convert amount to paise
-      currency: 'INR',
-      receipt: 'order_rcptid_' + Math.floor(Math.random() * 1000000),
+      currency: "INR",
+      receipt: "order_rcptid_" + Math.floor(Math.random() * 1000000),
     });
 
     res.status(200).json({
@@ -86,12 +89,11 @@ app.post('/data', async (req, res) => {
     });
   } catch (error) {
     console.error("Error creating Razorpay order:", error.message);
-    res.status(500).json({ error: 'Unable to create order' });
+    res.status(500).json({ error: "Unable to create order" });
   }
 });
 
-
-app.get('/verify', verifyToken, (req, res) => {
+app.get("/verify", verifyToken, (req, res) => {
   res.json({ status: true, message: "Token is valid" });
 });
 
@@ -99,12 +101,16 @@ function verifyToken(req, res, next) {
   const authHeader = req.headers.authorization;
   const token = authHeader && authHeader.split(" ")[1];
   if (!token) {
-    return res.status(401).json({ status: false, message: "No token provided" });
+    return res
+      .status(401)
+      .json({ status: false, message: "No token provided" });
   }
 
   jwt.verify(token, jwtkey, (err, decoded) => {
     if (err) {
-      return res.status(401).json({ status: false, message: "Failed to authenticate token" });
+      return res
+        .status(401)
+        .json({ status: false, message: "Failed to authenticate token" });
     }
     req.userId = decoded.userId;
     next();
@@ -118,6 +124,3 @@ app.get("/logout", (req, res) => {
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
-
-
-  
