@@ -72,7 +72,7 @@ function Header() {
   };
   
     return (
-        <nav className="bg-gradient-to-b from-purple-200 to-indigo-400 p-4">
+        <nav className="bg-gradient-to-b from-purple-200 to-indigo-400 p-4 fixed top-0 w-full z-50">
             <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
                 <div className="flex items-center mb-4 md:mb-0">
                     <img src={logo} className="h-24 w-24 rounded-full mr-2" alt="Logo" />
